@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use WWW::Mechanize;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub new
 {
@@ -51,7 +51,7 @@ sub _login
         }
     );
 
-    $self->{mech}->follow_link( url_regex => qr/sendsms.aspx/i );
+    return 0 unless ( $self->{mech}->find_link( url_regex => qr/sendsms.aspx/i ) && $self->{mech}->follow_link( url_regex => qr/sendsms.aspx/i ) );
 
     return ( $self->{mech}->uri =~ /sendsms.aspx/i ) ? 1 : 0;
 }
@@ -126,6 +126,10 @@ __END__
 
 Net::SMS::MunduSMS - Perl interface for sending SMS using the mundusms.com service.
 
+=head1 VERSION
+
+Version 0.02
+
 =head1 SYNOPSIS
 
   use Net::SMS::MunduSMS;
@@ -169,6 +173,10 @@ S Pradeep, E<lt>spradeep@cpan.orgE<gt>
 Please report any bugs or feature requests to C<bug-net-sms-mundusms at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Net-SMS-MunduSMS>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
+
+=head1 SOURCE
+
+Git repository at http://github.com/spradeep/Perl-Net-SMS-MunduSms
 
 =head1 SUPPORT
 

@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Net-SMS-MunduSMS
-version:            0.01
+version:            0.02
 abstract:           Perl interface for sending SMS using the mundusms.com service.
 author:
     - S Pradeep <spradeep@cpan.org>
